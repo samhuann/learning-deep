@@ -1,0 +1,49 @@
+Examples of some neural networks: 
+    Feed Forward: predict some number or label given a list
+    of numerical information
+    Convolutional: predict some feature given an image
+    Recurrent: predict features given a sequence of information where 
+    order matters (review is positive or negative)
+
+Feedforward: take input features and produce a prediction
+    Inputs to network are called features, some descripotion of information
+    related to task at hand
+    Use number of bedrooms as a feature to predict house price. 
+    Progressively predict more complex features given the previous features 
+
+The Objective of the Network is to Learn the Best Parameters.
+
+Full layer of neurons 
+
+activation functions introduce non-linearity to learn complex relationships: 
+    Sigmoid (bounds space between 0 and 1)
+
+    Tanh (bound between -1 and 1)
+
+    ReLU Describe very complex relationships thru non linear behavior 
+
+Loss
+    How well is network doing? Loss tells us how poorly it's doing. 
+    Goal of network is to find best parameters by minimizing loss. 
+
+Binary crossentropy
+    binary classification (is something there or not?)
+    doesn't predict 0 or 1, predicts somewhere in between (confidence or probability)
+    Error of 1 is infinite loss, Error of 0 is zero loss. Vertical asymptote to 1. 
+
+Gradient Descent
+    Find if loss is decreasing or not thru derivative. Backpropogation is used to 
+    compute the derivatives of loss with respect to parameters. 
+    negative = should increase, positive = should decrease. 
+
+To update parameters: use learning rate hyperaparameter allpha. 
+    Configuration parameter used for creating or training network. 
+    Update paramters to go in the direction loss is decreasing with a step proportion alpha. 
+    theta->theta-alpha dL/dtheta
+
+Learning rate has to be goldilocks: too low will take too long, too high will diverge, but
+just right will get us swiftly to the minimum point. 
+
+1. start with random parameters.
+2. compute loss. find derivatives of loss wrt parameters (backpropogation)
+3. Update parameteters (gradient descent, take step in right diirection). Choose good learning rate.

@@ -1,0 +1,37 @@
+Neural networks would take a large number of digits (training examples),
+then learn from these examples. 
+
+Perceptron (a type of artificial neuron) will take several binary inputs
+and produce a single binary output. 
+
+Weights: w1, w2... real numbers express the importance of the respective
+inputs to the output. 
+    Neuron's output will depend on whether the weighted sum (linear span basically) is
+    less than or greater than some threshold value. Also a paramter of the neuron. 
+
+    Perceptrons can be used for simple decision making. For example, "should i do something"
+    depends on weights of several variables, which vary based on how important they are to me.
+
+Add more layers for complex decision making!
+
+Bias, b = -threshold. This can be how easy it is to get perceptron to fire. 
+    Big bias = extremely easy fire. 
+    Very negative bias = very hard fire. 
+
+Learning algorithms: automatically tune weights and biases of a network of artificial neurons
+    Make small changes in weights and biases so the network gets closer 
+
+Better neuron: sigmoid neuron. Small changes in weights and bias only cause a small chnage
+in output. Can take any value between 0 and 1. Uses sigmoid function. 
+
+The idea here is that with a really large weight+bias, the function will be very close to 1. 
+    With really negative value, then the function will be very close to 0. 
+
+delta(output) is a linear function. 
+
+Middle layer: hidden layer, neither inputs nor outputs
+
+feedforward neural networks: output from one layer is used as input to the next
+
+(incomplete, read more after finishing Wali's)
+
