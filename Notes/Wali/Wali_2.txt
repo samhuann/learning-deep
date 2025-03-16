@@ -1,0 +1,125 @@
+Underfitting and Overfitting:
+    fitting a model to a dataset refers to training the model on that data set. 
+    as loss decreases, the model 'fits' to the data.
+
+Underfitting: too simple to explain variance
+Appropriate
+Overfitting: forced, too good to be true
+
+Underfitting: 
+    bad hyperparameters (too high learning rate)
+    too few neurons or layers
+    bad data
+    neural network can't handle it, use a different type of neural network to handle it
+
+Overfitting:
+    Can't Generalize. It's like if a student just memorizes all the questions on the test and doesn't learn.
+    Next test, they are screwed
+
+Train-Validation Split: check if the model is able to generalize by testing it on unseen, labeled data
+    Basically, there's data for training (training set) (study materials), and validation set (the exam)
+    validation loss should be close to training loss if able to generalize
+
+for small datasets, use 60/40 training to validation, and for large ones, use 90/10
+
+Validation set should be in the same distribution as the data you want to make inferences on. 
+    You can use training data from the internet on cats and dogs for example, but you cannot use them for validation
+    images from internet are different from mobile pictures for example
+
+Overfitting: memorizing the unique circumstances. Don't make the neurons dependent on previous neurons,
+instead develop new information derived from utilization
+    Use more training data, and make model simpler 
+
+Regularization: techniques used to combat overfitting by reducing codependency between neurons
+
+Bit weights: if a weight is heavy, it could mean it's being relied on. Overly large weights can be penalized: 
+    higher hyperaparamter will prioritize avoiding large weights. lower will prioritize decreasing loss. 
+
+Dropout: 
+    Randomly drop out neurons during training so neurons don't rely on a few select ones. 
+    neurons need to use a wide diverse range of values. 
+    use hyperparamter p: p=0.2, 20% is dropped out
+
+gradient descent with momentum: 
+    roll like a ball! 
+    momentum will keep track of how fast we're going by retaining pas speed
+    use this in gradient descent instead of i
+
+Exponentially Weighted Moving Averages: keeps moving average of the values. recent values are weighted higher
+than older values which are decayed thru time.
+
+Momentum involves hyperparamter Beta between 0 and 1. 
+    Higher beta: preserving momentum and retaining speed
+    Lower beta: emphasis on recent derivatives. will keep into consideration last 1/(1-beta) deriatives.
+
+Vanishing Gradient: 
+    Gradient is close to 0 before learning a good solution: meaning that the parameters don't change,
+    and we stay with a bad solution
+
+    occurs in very deep networks. shallow layers unable to effect deep layers. 
+
+    bad input ranges. changing the weights doens't really chane outputs. fix by normalization
+
+    weights too small, harder to learn good conections, but pytorch and tensorflow automatically choose best 
+
+
+bad activation function. happnens often with sigmoid and tanh because of exponentially smaller derivatives 
+
+Exploding Gradient
+    very steep loss surface: huge gradient: huge step in loss surface, which leads to even steeper gradient...
+
+    Overly large weights, overly large inputs 
+
+to prevent vanishing and exploding gradients, make sure there's proper weight initialization and normalization. smoothen
+    gradient clipping (set a max for derivative size)
+
+Adam Optimizer the one you should always use
+    keeps EWMAs of each derivative for momentum and normalization. keeps them in the same scale
+
+ReLU is good. It makes more accurate predictions because it learns features that isolate each classification
+    not present with 0, present with associated positive?
+
+Use Leaky ReLU: make the negative imputs much smaller negative inputs so they still have influence, looks like obtuse angle
+
+z score noirmalization: standardize features accordint to how many standard defviations away from mean
+
+Rescaling: features are normalized according to what percent of the total interval it covers
+
+batch normalize before activation 
+
+step decay: decay learning rate over epoch. state of the art research uses cosine annealing (looks like half a cosine period)
+
+we use warmup: increase learning rate starting from a small value linearly in the beginning of training, then do whatever
+    more safe than without
+
+Bias-Variance Trade off: 
+    high bias or high variance? underfitting vs overfitting?
+
+Iterative Cycle of Machine Learning: 
+
+1. Dont' spend too much time trying to create the perfect model. Make incremental improvements. Have a solid foundation.
+2. Have everything you need to properly evaluate the model. Have metrics, specific missed examples in data, etc. 
+3. Slowly improve a signle mdoel, tune parameters and try out different ideas, or simultaenously train several models
+searching for the best configuration. 
+4. Iterate thru models is effective. Be skeptical of other solutions to see if you can improve on things. 
+5. When searching for hyperparameters use a scale. 
+
+Classification: 
+    Binary (positive or negative diagnosis)
+    Multi-class (one out of some number of options)
+    Multi-Label (predict if each of labels apply)
+
+entropy: measure of impurity/uncertainty/randomness of probability distribution. cross-entropy: measure of 
+difference between 2 probability distributions. 
+
+Class imbalance: having significantly different number of examples fo reach case.
+    For example, if there's more negative patients, the network will guess the negative case or be influenced by it
+
+Metrics: 
+    Accuracy, the percent of cases predicted correctly. Affected by class imbalance. 
+    Recall, percent true positivies and true negatives
+    Precision, percent of positive predictions that were correct,
+    F1 score: harmonic mean of precision and recall. Good models have good recall and precision. 
+
+Precision Recall curve: gives us metric of evaluating relationship between precision and recall
+by plotting them against thresholds. We want to maximize this area. 
