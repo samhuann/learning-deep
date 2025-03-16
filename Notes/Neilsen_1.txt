@@ -33,5 +33,19 @@ Middle layer: hidden layer, neither inputs nor outputs
 
 feedforward neural networks: output from one layer is used as input to the next
 
-(incomplete, read more after finishing Wali's)
+recurrent neural networks: feedback loops are possible. neurons fire for limited time, then become quiescent
+
+Why do we use 10 neurons instead of 4 (binary)?
+    hard to relate significant bits with the components
+
+Cost function, loss or objective function: use mean squared error. becomes small when y(x) is equal to a for all inputs.
+
+gradient descent can be viewed as taking small steps in the direction that does the MOST to decrease C immediately.
+
+Stochastic gradient descent: 
+    We use a small sample of randomly chosen training inputs to estimate gradient
+    speeds up learning and gradient descent (use minibatch)
+
+    Pick random minibatches over and over and train until we've exhausted them. Called an epoch of training. 
+    Then start over with another epoch.
 
