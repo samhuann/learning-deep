@@ -1,0 +1,56 @@
+3D tensors can be thought of as matrices layered on top of each other
+    2 spatial dimensions and 1 channel dimension
+
+To flatten images we can take every pixel as a feature in a long vector
+
+There is a weight for every pixel 
+    the bad part is that if we rotate or flip the image the network won't think its the same thing
+
+Featre is something like the appareance of a nose, loop, car, in an image, etc. not like if the image has 100 brightness
+at some position in space
+
+we apply random augmentation to images during training.
+    hard to memorize, preventing overfitting, and also more robust
+
+we can represent spatial features with high values where feature is presenta nd low where there isn'take
+    apply a filter, and this will scan thru patches which will produce a number indicating if the feature is present
+    change this filter matrix based on what sort of feature you want to detect
+
+Convolutions (applying filter to image) will reduce image size. 
+
+sigma(X*W + b) now
+    X is image, * is convolution, W is filter, b is bias
+
+Kernel size: size of filter
+    Larger: global spatial features
+    Smaller: local spatial features
+
+We apply filter to each channel, and we apply multiple filters. Stack!
+
+Add zero padding around image so convolution will result in image of same resolution
+
+how to turn into feature information?
+    progressively decrease spatial dimension and image size(downsampling)
+    progressively increase feature dimension. each channel corresponds with one feature 
+    deeper = more filters per layer
+    flatten things into a vector
+
+early on, we analyze low level features, (edges and stuff), then later we analyze higher level features
+
+How to downsample?
+    stride. slide kernel with step size. bigger stride = more downsampling
+
+Pooling
+    slide kernel over image but take average of max, which reduces spatial dimensnion
+
+common practice to convert to vector when spatial dimension is 7x7
+
+Global average Pooling
+    take each channel and average, which will get measurement of how prevalent each feature is
+    better Cost
+    turn from 7x7x1024 to 1024
+
+vanishing gradient problem
+    we want more depth for mopre complex features, but it leads to vanishing gradient problem
+    skip connection. simply add past results to future layers. 
+    
