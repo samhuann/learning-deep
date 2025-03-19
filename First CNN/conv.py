@@ -24,6 +24,8 @@ class Conv3x3:
         #perform forward pass of conv layer using given input
         #returns 3d numpy array with dimensions (h, w, num_filters). input is 2d numpy array
 
+        self.last_input = input
+
         h, w = input.shape #receive height and width of input
 
         output = np.zeros((h-2, w-2, self.num_filters)) #create empty output array
@@ -32,3 +34,19 @@ class Conv3x3:
             output[i,j] = np.sum(im_region * self.filters, axis=(1,2))#multiply, and sum over height and width
         #axis=(1,2) produces a 1d array of length num_filters
         return output
+    def backprop(self, d_L_d_out, learn_rate):
+       
+        d_L_d_filters = np.zeros(self.filters.shape)
+
+        for im_region, i, j in self.iterate_regions(self.last_input):
+            for f in range(self.num_filters):
+                d_L_d_filters[f] += d_L_d_out[i, j, f] * im_region
+
+        # Update filters
+        self.filters -= learn_rate * d_L_d_filters
+
+        # We aren't returning anything here since we use Conv3x3 as
+        # the first layer in our CNN. Otherwise, we'd need to return
+        # the loss gradient for this layer's inputs, just like every
+        # other layer in our CNN.
+        return None

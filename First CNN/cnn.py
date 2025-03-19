@@ -36,12 +36,21 @@ def train(im, label, lr=.005):
 
   # Backprop
   gradient = softmax.backprop(gradient, lr)
-  # TODO: backprop MaxPool2 layer
-  # TODO: backprop Conv3x3 layer
+  gradient = pool.backprop(gradient)
+  gradient = conv.backprop(gradient, lr)
 
   return loss, acc
 
 print('MNIST CNN initialized!')
+
+for epoch in range(3):
+  print('--- Epoch %d ---' % (epoch + 1))
+
+  # Shuffle the training data
+  permutation = np.random.permutation(len(train_images))
+  train_images = train_images[permutation]
+  train_labels = train_labels[permutation]
+
 
 # Train
 loss = 0
