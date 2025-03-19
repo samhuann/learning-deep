@@ -5,10 +5,8 @@ from loader import load_mnist_images, load_mnist_labels, load_test_data
 from maxpool import MaxPool2
 from softmax import Softmax
 
-#train_images = load_mnist_images("mnist_data/train-images.idx3-ubyte") #load training images
-#train_labels = load_mnist_labels("mnist_data/train-labels.idx1-ubyte") #load training labels
-
-
+train_images = load_mnist_images("mnist_data/train-images.idx3-ubyte")[:1000] #load training images
+train_labels = load_mnist_labels("mnist_data/train-labels.idx1-ubyte")[:1000] #load training labels
 
 test_images, test_labels = load_test_data()
 
@@ -27,20 +25,36 @@ def forward(image, label):
 
     return out, loss, acc
 
+def train(im, label, lr=.005):
+
+  # Forward
+  out, loss, acc = forward(im, label)
+
+  # Calculate initial gradient
+  gradient = np.zeros(10)
+  gradient[label] = -1 / out[label]
+
+  # Backprop
+  gradient = softmax.backprop(gradient, lr)
+  # TODO: backprop MaxPool2 layer
+  # TODO: backprop Conv3x3 layer
+
+  return loss, acc
+
 print('MNIST CNN initialized!')
 
+# Train
 loss = 0
 num_correct = 0
-for i, (im,label) in enumerate(zip(test_images, test_labels)):
-    _, l, acc = forward(im, label)
-    loss +=1
-    num_correct +=acc
-    
-    if i%100 == 99: #print stats every 100 steps
-        print(
-            'Step[%d] Past 100 steps: Average Loss %.3f | Accuracy: %d%%' %(i+1, loss/100, num_correct)
-        )
-        loss = 0
-        num_correct = 0
+for i, (im, label) in enumerate(zip(train_images, train_labels)):
+  if i % 100 == 99:
+    print(
+      '[Step %d] Past 100 steps: Average Loss %.3f | Accuracy: %d%%' %
+      (i + 1, loss / 100, num_correct)
+    )
+    loss = 0
+    num_correct = 0
 
-
+  l, acc = train(im, label)
+  loss += l
+  num_correct += acc
