@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        body {
+            font-family: "Arial";
+        }
+    </style>
+    <script type="text/javascript">
+    window.awsWafCookieDomainList = [];
+    window.gokuProps = {
+"key":"AQIDAHjcYu/GjX+QlghicBgQ/7bFaQZ+m5FKCMDnO+vTbNg96AGBlkoJEiGd3i4P+X1w2qzFAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMnhh+4RjP4A3k52TrAgEQgDvPB7Xxdjm6mPZsxfnwJvsixID5lCuV3a3btyDLrQ0UJXSqJmvA0i4IFgSW8p75i83gm/u46HwZNjsSkg==",
+          "iv":"CgAFbxKZ6gAAAPFh",
+          "context":"hh0WjcToK2X3mOlQdYQqkQW2Q6fStUeEjR+1uSMl6zTGM38AzgBpS+VOfcX+1miFZZSLFyEz7Y8L3MAg8oc/pk/mfiJVUy0KtudI4tx1X53ld42xBl7FcxxMTaD5sCHKf3Ju3U7llQy1xwWjnrQHkp8rx3Y0VVpYNLhHas6l4o8Z9ECZoWHOo8KHSw+64bWP2/scHxU8GWvDiEBaFU0RSTnWe8/NL4I6xWD5X85caO+uFGOV2Zni+Nfxk0VKMSvZKmpzBKwNeBTPnoqlUt0sXrMncOlxwUjkYOnEL45nbOrW+PEatM5HaKVuDtnfQOJrMUSWJ748YIK4MuUEkkaVkXIMnv3kp1jArb2NkhMTblWMCNZq8e9aq7mOMw=="
+};
+    </script>
+    <script src="https://5778173872a2.3e429ef6.ap-southeast-2.token.awswaf.com/5778173872a2/d16a8485b8d7/35a33804077a/challenge.js"></script>
+</head>
+<body>
+    <div id="challenge-container"></div>
+    <script type="text/javascript">
+        AwsWafIntegration.saveReferrer();
+        AwsWafIntegration.checkForceRefresh().then((forceRefresh) => {
+            if (forceRefresh) {
+                AwsWafIntegration.forceRefreshToken().then(() => {
+                    window.location.reload(true);
+                });
+            } else {
+                AwsWafIntegration.getToken().then(() => {
+                    window.location.reload(true);
+                });
+            }
+        });
+    </script>
+    <noscript>
+        <h1>JavaScript is disabled</h1>
+        In order to continue, we need to verify that you're not a robot.
+        This requires JavaScript. Enable JavaScript and then reload the page.
+    </noscript>
+</body>
+</html>
